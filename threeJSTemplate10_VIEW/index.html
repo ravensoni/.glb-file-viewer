@@ -1,0 +1,74 @@
+<!--
+   Text Buffer Geometry : A class for generationg text as a single geometry. It is contructed by providing a string of text, and a hash of parameters consisting of a loaded Font and settings for the geometry's parent ExtrudeBufferGeometry.
+
+   Transformations : Anything that changes rotation, position, shape or anything else about the geometry of an object is a transformation.
+
+   The Group constructor doesn't take any parameters
+
+   Transforming Meshes vs Transforming Geometries :
+   Transforming the geometry will give us the same visual result as transforming the mesh. There are, however, a couple of important differences.
+   Transforming the Mesh is MUCH more Efficient.
+
+   Three.js is clearly not designed to be a modelling program, and we should not treat it as such.
+   To create complex, animated models, we will need to use an external modeling program.
+
+   ...
+
+   // _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+   GlTF (Graphics Layer Transport Format) :
+
+
+   // So basically our animation is running at 60 FRAMES PER SECOND and we so the delta( the time gap between 2 frames ) will be approximate 16.666 ms milliseconds.
+   // By assigning the (delta=?) value we can control the speed of the Animation cause we assigning(giving) it the amount of time between 2 frames per second. So that it will update as per our assigned time .
+   // If we give less time the speed will increase as per it. and vice-versa.
+   // But by default our FPS calCulated by our 'delta' will be more probably equal to 16.666 ms (milliseconds). but even it may not be the same condition always!!!
+   // console.log( delta );
+
+ -->
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>threeJSTemplate10</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta charset="UTF-8" />
+      <link rel="icon" href="https://discoverthreejs.com/favicon.ico" type="image/x-icon">
+      <link href="styles/main.css" rel="stylesheet" type="text/css">
+      <!-- bootstrap cdn -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      <!--
+         Include the main three.js script.
+         The global variable THREE will be
+         available for use in any scripts
+         loaded after this one.
+      -->
+      <script src="js/vendor/three/three.js"></script>
+      <script src="js/vendor/three/DRACOLoader.js"></script>
+   </head>
+   <body>
+      <div>
+         <h1><a href="http://ray3dc.blogspot.com/" class="text-danger" target="_blank">ray3dc</a></h1>
+      </div>
+
+      <div class="form">
+         <input class=" form-control" type="text" id="myFilePath"  name="myFilePath" placeholder="/YourPath/models/Parrot.glb" />
+         <br>
+         <button type="button" class="btn btn-success" onclick="filePassed()">SHOW ME</button>
+      </div>
+      <div id="scene-container">
+         <!-- This div will hold our scene-->
+      </div>
+      <footer>
+         <!--
+            Finally, include the script that
+            runs your three.js app.
+         -->
+         <script src="js/vendor/three/GLTFLoader.js"></script>
+         <script src="js/vendor/three/OrbitControls.js"></script>
+         <script src="js/app.js"></script>
+      </footer>
+   </body>
+</html>
+<!-- C:/xampp/htdocs/test/threejs/threejsExamples/threeJSTemplate10_VIEW/models/Parrot.glb -->
