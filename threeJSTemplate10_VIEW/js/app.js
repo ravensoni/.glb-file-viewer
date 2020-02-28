@@ -5,6 +5,8 @@ let controls;
 let renderer;
 let scene;
 let model;
+let dragControls;
+let models = [];
 
 // let myFilePath;
 
@@ -45,6 +47,19 @@ function createCamera(){
 }
 function createControls(){
    controls = new THREE.OrbitControls( camera, container);
+   
+   dragControls = new THREE.DragControls( models, camera, container );
+   dragControls.addEventListener( 'dragstart', function(event){
+      console.log( 'drag start' );
+      controls.enabled = false;
+   });
+   dragControls.addEventListener( 'drag', function(event){
+      console.log( 'drag' );
+   });
+   dragControls.addEventListener( 'dragend', function(event){
+      console.log( 'drag end' );
+      controls.enabled = true;
+   });
 }
 
 // _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
@@ -88,6 +103,7 @@ function loadModels(){
       // action.stop();
 
       scene.add( model );
+      models.push( model );
    };
 
 
