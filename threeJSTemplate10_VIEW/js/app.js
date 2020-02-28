@@ -24,7 +24,7 @@ function init(){
       loadModels();
       console.log('called');
    }
-   loadModels();
+   loadParrot();
    createLights();
    createRenderer();
 
@@ -76,20 +76,8 @@ function createLights(){
 function loadModels(){
    const loader = new THREE.GLTFLoader();
 
-
-
-   // A reusable Function to set up the models. We're passing in a position parameter so that they can be individually placed around the scene.
    const onLoad = ( gltfResult, position ) => {
       model = gltfResult.scene.children[ 0 ];
-
-      // // the below 2 'if' statements are for changing the 'size' of the models from their default value.
-      // if( position == gVehiclePosition ){
-      //    model.scale.set( 5, 5, 5);
-      // }
-      // if( position == soldierPosition ){
-      //    model.scale.set( 1, 1, 1);
-      //    model.rotateZ( 180 );
-      // }
 
       model.position.copy( position );
 
@@ -100,28 +88,52 @@ function loadModels(){
 
       const action = mixer.clipAction( animation );
       action.play();
-      // action.stop();
 
       scene.add( model );
       models.push( model );
    };
-
-
 
    const onProgress = () => { console.log( 'Models are on the way...' ); };
    //
    const onError = ( errorMessage ) => { console.log( errorMessage ); };
 
    const myFilePath = document.getElementById("myFilePath").value;
-   // const myFilePath = "models/Parrot.glb";
-
-   const parrotPosition = new THREE.Vector3( 0, 0, 0);
-   loader.load( 'models/Parrot.glb' , gltfResult => onLoad( gltfResult, parrotPosition ), onProgress, onError );
    
    const someOnesPosition = new THREE.Vector3( 0, 30, 0);
    loader.load( myFilePath , gltfResult => onLoad( gltfResult, someOnesPosition ), onProgress, onError );
-
 }
+
+// _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+function loadParrot(){
+   const loader = new THREE.GLTFLoader();
+
+   const onLoad = ( gltfResult, position ) => {
+      model = gltfResult.scene.children[ 0 ];
+
+      model.position.copy( position );
+
+      const animation = gltfResult.animations[ 0 ];
+
+      const mixer = new THREE.AnimationMixer( model );
+      mixers.push( mixer );
+
+      const action = mixer.clipAction( animation );
+      action.play();
+
+      scene.add( model );
+      models.push( model );
+   };
+
+   const onProgress = () => { console.log( 'Models are on the way...' ); };
+   //
+   const onError = ( errorMessage ) => { console.log( errorMessage ); };
+
+   const myFilePath = document.getElementById("myFilePath").value;
+
+   const parrotPosition = new THREE.Vector3( 0, 0, 0);
+   loader.load( 'models/Parrot.glb' , gltfResult => onLoad( gltfResult, parrotPosition ), onProgress, onError );
+}
+
 
 // _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
