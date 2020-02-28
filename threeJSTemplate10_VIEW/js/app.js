@@ -116,7 +116,10 @@ function loadModels(){
    // const myFilePath = "models/Parrot.glb";
 
    const parrotPosition = new THREE.Vector3( 0, 0, 0);
-   loader.load( myFilePath , gltfResult => onLoad( gltfResult, parrotPosition ), onProgress, onError );
+   loader.load( 'models/Parrot.glb' , gltfResult => onLoad( gltfResult, parrotPosition ), onProgress, onError );
+   
+   const someOnesPosition = new THREE.Vector3( 0, 30, 0);
+   loader.load( myFilePath , gltfResult => onLoad( gltfResult, someOnesPosition ), onProgress, onError );
 
 }
 
