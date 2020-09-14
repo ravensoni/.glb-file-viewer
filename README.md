@@ -8,4 +8,4 @@ folder and input the path as shown below (in the input field) :
 # [models/YourFileName.glb]
 
 # Check this out in here
-https://ray3dc.github.io/.glb-file-viewer/threeJSTemplate10_VIEW/index.html
+https://ravensoni.github.io/.glb-file-viewer/threeJSTemplate10_VIEW/index.html
